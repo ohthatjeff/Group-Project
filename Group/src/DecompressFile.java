@@ -17,8 +17,11 @@ public class DecompressFile {
 	 * @throws ClassNotFoundException Exception thrown if HuffmanTree class isn't found.
 	 */	
     public static void decompress(File in, File out) throws IOException, ClassNotFoundException {
+        // file input stream from sourceFile
         FileInputStream inputStream = new FileInputStream(in);
+        // object input stream from sourceFile
         ObjectInputStream objInputStream = new ObjectInputStream(inputStream);
+        // huffman tree object from sourceFile
         HuffmanTree huffmanTree = (HuffmanTree) objInputStream.readObject();
         BitInputStream bitInputStream = new BitInputStream(inputStream);
 
@@ -30,5 +33,15 @@ public class DecompressFile {
 
         objInputStream.close();
         bitInputStream.close();
+    }
+
+    
+ 
+    public static void main(String[] args) {
+        try {
+            DecompressFile.decompress(new File(args[0]), new File(args[1]));
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }        
     }
 }

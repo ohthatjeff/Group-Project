@@ -8,9 +8,9 @@ import java.io.IOException;
 */
 public class Driver {
     public static void main(String[] args) throws IOException {
-        CompressFile.compress(new File("input.txt"), new File("output.txt"));        
+        CompressFile.compress(new File("sourceFile.txt"), new File("compressedFile.txt"));        
         try {
-            DecompressFile.decompress(new File("output.txt"), new File("decompressedOutput.txt"));
+            DecompressFile.decompress(new File("compressedFile.txt"), new File("decompressedOutput.txt"));
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }        

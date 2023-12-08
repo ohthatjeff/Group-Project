@@ -8,9 +8,14 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+/**
+ * Creates a Huffman tree and allows for decoding and returning the codes
+ * @since 11-27-2023
+ * @author Terry Ton, Esteban Madrigal , Manvir Hansra, Kushaan Naskar, Vinh Tran 
+ */
 public class HuffmanTree implements Serializable {
     private static final long serialVersionUID = 1L;
-    private static final char EOF = '\uFFFF';
+    public static final char EOF = '\uFFFF';
     private Node root;
     private final File file;
     private Map<Character, Integer> charFrequencies = new HashMap<>();
@@ -19,8 +24,6 @@ public class HuffmanTree implements Serializable {
     /**
     * frequency is the occurrence of a character in list
     * parent nodes store the sum of frequency of children
-    * @since 11-27-2023
-    * @author Terry Ton, Esteban Madrigal , Manvir Hansra, Kushaan Naskar, Vinh Tran 
     */
     public class Node implements Serializable, Comparable<Node>{
         private static final long serialVersionUID = 1L;
@@ -62,7 +65,10 @@ public class HuffmanTree implements Serializable {
             this.CHARACTER = character;
         }
     }
-    
+
+    /**
+     * Call the the encode method to create the HuffmanTree
+     */
 
     public HuffmanTree(File inputFile) throws IOException{
         this.file = inputFile;
@@ -86,6 +92,10 @@ public class HuffmanTree implements Serializable {
         }
         reader.close();
     }
+
+    /**
+     * Encode the data into a Huffman Tree
+     */
 
     private void encode() throws IOException {
         getCharFrequencies();
@@ -125,9 +135,9 @@ public class HuffmanTree implements Serializable {
     }     
 
     /**
-     * 
-     * @param node
-     * @param code
+     * Generate the HuffmanCodes tree from the given string 
+     * @param node The current node
+     * @param code The text which need to be added
      */
     private void generateHuffmanCodes(Node node, String code) {
         if (node instanceof Leaf) {
@@ -138,6 +148,9 @@ public class HuffmanTree implements Serializable {
         generateHuffmanCodes(node.right, code.concat("1"));
     }
 
+    /**
+     * HuffmanCodes getter
+     */
     public Map<Character, String> getHuffmanCodes() {
         return huffmanCodes;
     }

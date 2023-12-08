@@ -25,9 +25,14 @@ public final class CompressFile {
             char c = (char) input.read();
             bitOut.writeBits(codes.get(c));
         }
+        bitOut.writeBits(codes.get(HuffmanTree.EOF));    //add the EOF token to the compressed file.
 
         objOut.close();
         bitOut.close();
         input.close();
+    }
+
+    public static void main(String[] args) throws IOException {
+        compress(new File(args[0]), new File(args[1]));
     }
 }
