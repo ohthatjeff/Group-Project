@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * reads from inFile and writes a compressed equal to outFile
  * @since 11-27-2023
- * @author Terry Ton, Esteban Madrigal , Manvir Hansra, Kushaan Naskar, Vinh Tran 
+ * @author Terry Ton, Esteban Madrigal , Manvir Hansra
  */
 public final class CompressFile {
 

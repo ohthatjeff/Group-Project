@@ -7,7 +7,7 @@ import java.io.OutputStream;
 /**
  * Creates or uses an existing file, clears it, and then writes bits to the file
  * @since 11-27-2023
- * @author Terry Ton, Esteban Madrigal , Manvir Hansra, Kushaan Naskar, Vinh Tran 
+ * @author  Kushaan Naskar, Vinh Tran 
  */
 public class BitOutputStream {
     private OutputStream output; // file to output to

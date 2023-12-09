@@ -5,7 +5,7 @@ import java.io.InputStream;
 /**
  * reads bits from passed file
  * @since 11-27-2023
- * @author Terry Ton, Esteban Madrigal , Manvir Hansra, Kushaan Naskar, Vinh Tran 
+ * @author Terry Ton, Esteban Madrigal , Manvir Hansra,
  */
 public class BitInputStream {
     private InputStream input; // file to read from

@@ -3,7 +3,7 @@ import java.io.*;
 /**
 * This class implements Decompression given a compressed input file. 
 * @since 11-27-2023
-* @author Terry Ton, Esteban Madrigal , Manvir Hansra, Kushaan Naskar, Vinh Tran 
+* @author  Kushaan Naskar, Vinh Tran 
 */
 public class DecompressFile {
 	
