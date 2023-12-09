@@ -3,11 +3,12 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Takes a file as input and reads the bits from it
- * @author Manvir Hansra
+ * reads bits from passed file
+ * @since 11-27-2023
+ * @author Terry Ton, Esteban Madrigal , Manvir Hansra, Kushaan Naskar, Vinh Tran 
  */
 public class BitInputStream {
-    private InputStream input;
+    private InputStream input; // file to read from
     private byte currentByte;
     private int totalBits;
     private int bitsRead;
@@ -16,11 +17,11 @@ public class BitInputStream {
 
     public BitInputStream(InputStream input) throws IOException {
         this.input = input;
-        this.totalBits = input.available()*8;
+        this.totalBits = input.available() * 8;
     }
 
     /**
-     * Returns the total amount of bits in the file
+     * returns the amount of bits left to be read
      * @return total number of bits in the file 
      * @throws IOException
      */    
@@ -35,20 +36,26 @@ public class BitInputStream {
      */
     public char readBit() throws IOException {
         if (available() == 0) {
+            // number of bits read is total amount
             throw new EOFException();
         } else if (firstRead) {
+            // bit is first to be read
             currentByte = (byte) input.read();
             firstRead = false;
         }
+        // assign 0 or 1 to c
         char c = ((currentByte << bitToRead) & 0x80) == 0 ? '0' : '1';
 
-        bitToRead++;
-        bitsRead++;
+        bitToRead++; // increment bits to read
+        bitsRead++; // increment amount of bits read
 
         if (bitToRead == 8) {
-            currentByte = (byte) input.read();
-            bitToRead = 0;
+            // full byte has been read
+            currentByte = (byte) input.read(); // read a new byte
+            bitToRead = 0; // set bits to read at 0
         }
+
+        // return the bit
         return c;
     }
 

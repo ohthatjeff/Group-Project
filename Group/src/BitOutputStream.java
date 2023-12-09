@@ -6,10 +6,11 @@ import java.io.OutputStream;
 
 /**
  * Creates or uses an existing file, clears it, and then writes bits to the file
- * @author Manvir Hansra
+ * @since 11-27-2023
+ * @author Terry Ton, Esteban Madrigal , Manvir Hansra, Kushaan Naskar, Vinh Tran 
  */
 public class BitOutputStream {
-    private OutputStream output;
+    private OutputStream output; // file to output to
     private int bitCount = 0;
     private byte currentByte = 0;
 
@@ -23,14 +24,15 @@ public class BitOutputStream {
      * @throws IOException
      */
     public void writeBit(char bit) throws IOException {
-        currentByte <<= 1;
-        currentByte |= (bit - '0');
+        currentByte <<= 1; // shift byte one bit left
+        currentByte |= (bit - '0'); // subtracting 0 (48) returns 0 or 1 integer
 
-        bitCount++;
+        bitCount++; // increment bit count
 
         if (bitCount == 8) {
-            bitCount = 0;
-            output.write(currentByte);
+            // full byte has been written
+            bitCount = 0; // reset bitcount
+            output.write(currentByte); // write the current byte
         }
     }
 
@@ -51,10 +53,13 @@ public class BitOutputStream {
      */
     public void close() throws IOException {
         if (bitCount != 8 && bitCount != 0) {
+            // there is 1 or 7 bits needed to fill
             while (bitCount < 8) {
-            currentByte <<= 1;
-            bitCount++;
+                // shift current byte 1 left until byte is 8 bits
+                currentByte <<= 1; 
+                bitCount++;
             }
+            // byte has been filled 
             output.write(currentByte);
         }
         output.close();
