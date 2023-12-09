@@ -8,8 +8,6 @@ import java.util.Map;
 
 public final class CompressFile {
 
-    private CompressFile() {}
-
     public static void compress(File inFile, File outFile) throws IOException {
         writeToFile(new HuffmanTree(inFile), new BufferedReader(new FileReader(inFile)), outFile);
     }
